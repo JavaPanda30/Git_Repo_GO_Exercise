@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package passenger;
+
+option go_package = "./Go-microservices/proto/passenger";
+
+service PassengerService {
+    rpc RequestRide (PassengerRequest) returns (PassengerResponse);
+    rpc UpdatePassengerStatus (PassengerStatusUpdate) returns (PassengerResponse);
+}
+
+message PassengerRequest {
+    string passenger_id = 1;
+    string pickup_location = 2;
+    string drop_location = 3;
+}
+
+message PassengerResponse {
+    string ride_id = 1;
+    bool success = 2;
+}
+
+message PassengerStatusUpdate {
+    string passenger_id = 1;
+    string status = 2;
+}
